@@ -59,8 +59,13 @@ const printSlots = () =>{
 
 const checkForWinner = () => {
     const isPlayerAWinner = state[0] === state[1] && state[1] === state[2];
-    if(isPlayerAWinner){ 
-        printWinnerMessage();
+    if(isPlayerAWinner){
+         document.querySelector('#buttonSpin').disabled = true; 
+        const timeout = setTimeout(()=>{
+            printWinnerMessage();
+            document.querySelector('#buttonSpin').disabled = false;
+        },1000);
+        
     }
 };
 
@@ -68,4 +73,10 @@ const printWinnerMessage = () => {
 
     document.querySelector('#winnerMessage').classList.remove('hidden');
 
+};
+
+
+const closeBanner = () => {
+
+    document.querySelector("#winnerMessage").classList.add('hidden');
 };
